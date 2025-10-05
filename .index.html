@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembuatan Tugas</title>
+  <style>
+    :root {
+      --primary: #2196f3;
+      --secondary: #0d47a1;
+      --light: #f5f9ff;
+      --dark: #1e293b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      color: var(--dark);
+      background-color: var(--light);
+      scroll-behavior: smooth;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 60px;
+      z-index: 100;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-1ec0-61fa-8fec-f86c4488f758/raw?se=2025-10-05T14%3A38%3A38Z&sp=r&sv=2024-08-04&sr=b&scid=b38f11c1-9322-579a-bcbe-af145cfc16de&skoid=f8b66c09-1aa0-4801-9884-173c5cef2b8c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-10-05T00%3A57%3A09Z&ske=2025-10-06T00%3A57%3A09Z&sks=b&skv=2024-08-04&sig=KO2XppslCjB19%2BbGkjan7qzcl5BCoM1gAYO7EjIr5T0%3D');
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 10%;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 24px;
+    }
+
+    header a {
+      background: var(--primary);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    header a:hover {
+      background: var(--secondary);
+    }
+
+    section {
+      padding: 80px 10%;
+    }
+
+    section h2 {
+      text-align: center;
+      color: var(--secondary);
+      font-size: 2rem;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    /* Tentang */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .about img {
+      flex: 1 1 400px;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .about .text {
+      flex: 1 1 400px;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    /* Keunggulan */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-box {
+      background: white;
+      border-radius: 10px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .feature-box h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    /* Galeri */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery img, .gallery video {
+      width: 100%;
+      border-radius: 10px;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    /* Harga */
+    .pricing {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .price-box {
+      background: white;
+      border-radius: 10px;
+      padding: 24px 30px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+      text-align: center;
+      width: 280px;
+      transition: 0.3s;
+    }
+
+    .price-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .price-box h3 {
+      color: var(--secondary);
+    }
+
+    .price-box p {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .price-box .price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 10px 0;
+    }
+
+    .price-box a {
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .price-box a:hover {
+      background: var(--secondary);
+    }
+
+    /* Form Pemesanan */
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    input, textarea, select {
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      background: var(--primary);
+      border: none;
+      color: white;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: var(--secondary);
+    }
+
+    /* Kontak */
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: var(--secondary);
+      color: white;
+      text-align: center;
+      padding: 18px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo ">MASH</div>
+    <ul>
+      <li><a href="#">Beranda</a></li>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#keunggulan">Keunggulan</a></li>
+      <li><a href="#galeri">Galeri</a></li>
+      <li><a href="#harga">Harga</a></li>
+      <li><a href="#pesan">Pesan</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Tugas selesai Hatipun Tenang</h1>
+    <p>Pembuatan tugas kuliah yang baik dan murah ayo di order langsung di kontak bawah</p>
+    <a href="#pesan">Pesan Sekarang</a>
+  </header>
+
+  <section id="tentang">
+    <h2>Tentang Proyek</h2>
+    <div class="about">
+      <img src="https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-34e0-61fa-9ae2-9d9d50d9502a/raw?se=2025-10-05T14%3A23%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=b50a5ef7-91ea-54a1-af8e-bafd24cb712e&skoid=f8b66c09-1aa0-4801-9884-173c5cef2b8c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-10-05T00%3A26%3A15Z&ske=2025-10-06T00%3A26%3A15Z&sks=b&skv=2024-08-04&sig=ZUJGEmo2sf%2BwzYkd2O/ZP6b/WOpn2q73K9yUcZNEFpk%3D" alt="tentang rumah" />
+      <div class="text">
+        <p> Tugas numpuk? Deadline makin dekat?
+Tenang, kami punya solusinya! 💪
+
+Kami menyediakan jasa pembuatan tugas yang cepat, rapi, dan sesuai instruksi dosen/guru Anda. Dari makalah, PowerPoint, CBR, CJR — semua bisa kami bantu!
+
+🎯 Cepat - Tepat - Terpercaya
+
+Hubungi kami sekarang dan dapatkan hasil maksimal tanpa stres!</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="keunggulan">
+    <h2>Keunggulan Kami</h2>
+    <div class="features">
+      <div class="feature-box">
+        <h3>Tepat Waktu</h3>
+        <p>Kami paham pentingnya tenggat waktu. Setiap tugas dikerjakan sesuai jadwal yang telah disepakati.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Hasil Rapi</h3>
+        <p>Dikerjakan dengan format profesional, tata bahasa yang baik, dan tampilan menarik.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Sesuai instruksi Klein</h3>
+        <p>Setiap detail dari Anda akan kami ikuti — mulai dari format penulisan, gaya bahasa, hingga sumber referensi.</p>
+      </div>
+       <div class="feature-box">
+        <h3>Gratis Refisi</h3>
+        <p>Butuh sedikit perubahan? Tenang, revisi gratis kami sediakan sampai Anda puas.</p>
+    </div>
+        <div class="feature-box">
+        <h3>Harga Terjangkau</h3>
+        <p>Kualitas premium tanpa bikin dompet menjerit. Kami tawarkan harga sesuai tingkat kesulitan tugas.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Privasi Dijamin</h3>
+        <p>Data dan identitas Anda aman 100%. Tidak akan dibagikan ke pihak mana pun.</p>
+    </div>      
+  </section>
+
+  <section id="galeri">
+    <h2>Galeri Foto & Video</h2>
+    <div class="gallery">
+      <img src="https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-fa4c-61fa-9bca-1b161a6c352f/raw?se=2025-10-05T15%3A06%3A29Z&sp=r&sv=2024-08-04&sr=b&scid=f09de2d0-12c1-531b-bbeb-f8af855448c2&skoid=f8b66c09-1aa0-4801-9884-173c5cef2b8c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-10-05T10%3A15%3A47Z&ske=2025-10-06T10%3A15%3A47Z&sks=b&skv=2024-08-04&sig=FgRQpQA2m8RhmGJkVCkChT8Uh17ZWW2%2BS0gA3cTDgzg%3D" alt="foto1">
+      <img src="https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-4488-61fa-8ffd-c690abe95bbb/raw?se=2025-10-05T15%3A18%3A57Z&sp=r&sv=2024-08-04&sr=b&scid=ceeb74b0-abc3-57bb-847f-f3cd096be771&skoid=3cb6de21-012a-49c9-9402-a1ebf8d0bd06&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-10-05T10%3A10%3A10Z&ske=2025-10-06T10%3A10%3A10Z&sks=b&skv=2024-08-04&sig=oeifYhB6A1PjvVGtQLglJzjed7zrij%2BZv4GOGUspcDU%3D" alt="foto2">
+      <img src="https://sdmntpritalynorth.oaiusercontent.com/files/00000000-a7d4-6246-a612-baa51729146b/raw?se=2025-10-05T15%3A31%3A07Z&sp=r&sv=2024-08-04&sr=b&scid=626e216f-38ce-5430-880d-b69f95a7c1de&skoid=3cb6de21-012a-49c9-9402-a1ebf8d0bd06&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-10-05T05%3A10%3A48Z&ske=2025-10-06T05%3A10%3A48Z&sks=b&skv=2024-08-04&sig=%2BcxF1STa5BHTLWnhluixaP6TCtf3nlXGGrcrJF3lXN8%3D" alt="foto3">
+    </div>
+  </section>
+
+  <section id="harga">
+    <h2>Harga Tugas</h2>
+    <div class="pricing">
+      <div class="price-box">
+        <h3>Makalah</h3>
+        <p>Simple-Ribet</p>
+        <div class="price">Rp.25K-Rp.100K</div>
+        <a href="#pesan">Pesan Sekarang</a>
+      </div>
+      <div class="price-box">
+        <h3>PowerPoint</h3>
+        <p>Simple-Ribet</p>
+        <div class="price">Rp.20K-50K</div>
+        <a href="#pesan">Pesan Sekarang</a>
+      </div>
+      <div class="price-box">
+        <h3>CBR & CJR</h3>
+        <p>Simple-Ribet</p>
+        <div class="price">Rp.40K-100K</div>
+        <a href="#pesan">Pesan Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="pesan">
+    <h2>Formulir Pemesanan</h2>
+    <form>
+      <input type="text" placeholder="Nama Lengkap" required />
+      <input type="email" placeholder="Email" required />
+      <input type="tel" placeholder="Nomor Telepon" required />
+      <select required>
+        <option value="">Pilih Tipe Rumah</option>
+        <option value="45">Makalah</option>
+        <option value="60">PowerPoint</option>
+        <option value="90">CBR & CJR</option>
+      </select>
+      <textarea rows="4" placeholder="Pesan Tambahan"></textarea>
+      <button type="submit">Kirim Pemesanan</button>
+    </form>
+  </section>
+
+  <section id="kontak">
+    <h2>Kontak Kami</h2>
+    <div class="contact">
+      <p>📍 Alamat: Jl.Mustofa no.123</p>
+      <p>📞 Telepon: +62 838 4741 6941</p>
+      <p>📧 Email: maulanaakbarsaid14.@gamail.com</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; "Solusi Tepat untuk Setiap Tugas Anda."
+  </footer>
+</body>
+</html>
